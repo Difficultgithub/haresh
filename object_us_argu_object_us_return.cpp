@@ -13,6 +13,7 @@ class Example
         cout<<"\n a:"<<a;
         cout<<"\n b:"<<b;
     }
+    
     Example add(Example E1,Example E2)
     {
         Example E_temp;

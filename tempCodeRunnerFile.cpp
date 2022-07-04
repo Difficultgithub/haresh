@@ -1,34 +1,85 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
-class Example
+class bank
 {
-    int a,b,c;
-    public:
-    void set_ab(int x,int y)//int z)
-    {
-        a=x,b=y;//,c=z;
-    }
-    void get_ab()
-    {
-        cout<<"\n a:"<<a;
-        cout<<"\n b:"<<b;
-      //  cout<<"\n c:"<<c;
-    }
-    Example add(Example E1,Example E2,Example E4)
-    {
-        Example E_temp;
-        E_temp.a=E1.a+E2.a+E4.a;
-        E_temp.b=E1.b+E2.b+E4.b;
-        E_temp.c=a,b;
-        return E_temp;
-    }
+    float bal = 0;
+
+public:
+    bank(int);
+
+    int deposit_ammount(int);
+
+    int withdraw_ammount(int);
+
+    int show_balance();
 };
+bank::bank(int amt) 
+{
+    bal = amt;
+}
+int bank::deposit_ammount(int d_amt)
+{
+    bal += d_amt;
+    return d_amt;   
+}
+int bank::withdraw_ammount(int w_amt)
+{
+   if (w_amt > bal)
+    {
+        cout << "\n you not able to withdraw";
+    }
+    else
+    {
+        bal -= w_amt;  
+    }
+    return w_amt;
+}
+int bank::show_balance()
+{
+    return bal;
+}   
 int main()
 {
-    Example E1,E2,E3,E4;
-    E1.set_ab(10,200);
-    E2.set_ab(11,21);
-    E4.set_ab(23,50);
-    E3=E3.add(E1,E2,E4);
-    E3.get_ab();
+    int ch;
+    bank b(5000);
+    do
+    {
+        cout << "\n****CHOICES****";
+        cout << "\n****ENTER 1 FOR DEPOSITE****";
+        cout << "\n****ENTER 2 FOR WITHDRAW****";
+        cout << "\n****ENTER 3 FOR SHOW_BALANCE****";
+        cout << "\n****ENTER 0 EXIT****";
+        cout << "\n";
+        cout << "\n";
+
+        cout << "\nENTER YOUR CHOICE : ";
+        cin >> ch;
+
+        switch (c)
+        {
+        case 1:
+            int d_amt;
+            cout << "\n Enter deoposite ammount :";
+            cin >> d_amt;
+            b.deposit_ammount(d_amt);
+            cout << "\n  " << d_amt << " is added in your bank";
+            break;
+        case 2:
+            int w_amt;
+            cout << "\n Enter withdraw ammount :";
+            cin >> w_amt;
+            b.withdraw_ammount(w_amt);
+             cout << "\n you  withdraw  " << w_amt << "  rupees";
+            break;
+        case 3:
+
+            cout << "\n  total ammount in your bank is :" <<  b.show_balance();
+
+            break;
+        case 0:
+            break;
+        default:
+            cout << "INVALID CHOICE";
+        }
+    } while (ch != 0);
 }
